@@ -43,6 +43,31 @@ class Client(db.Model):
         self.email = email
         self.phone = phone
 
+    '''
+    insert()
+        inserts a new record into a database
+        the record must have a unique identity number
+        the record must have a unique id
+        EXAMPLE
+            client = Client(first_name=name, surname=surname, 
+                            id_number = identiy number, email = email, 
+                            phone = phone)
+            client.insert()
+    '''
+    def insert(self):
+        print('Before ADDING')
+        db.session.add(self)
+        print('ADDED, now trying to commit')
+        db.session.commit()
+        print('COMMIT successful')
+  
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
     def format(self):
         return {
             'id': self.id,
