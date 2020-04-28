@@ -54,19 +54,21 @@ class Client(db.Model):
                             phone = phone)
             client.insert()
     '''
+
+
     def insert(self):
-        print('Before ADDING')
         db.session.add(self)
-        print('ADDED, now trying to commit')
         db.session.commit()
-        print('COMMIT successful')
+
   
     def update(self):
         db.session.commit()
 
+
     def delete(self):
         db.session.delete(self)
         db.session.commit()
+
 
     def format(self):
         return {
@@ -82,6 +84,7 @@ class Client(db.Model):
 Product
 Contains the product information
 '''
+
 class Product(db.Model):
     __tablename__ = 'product'
 
@@ -91,7 +94,6 @@ class Product(db.Model):
     price = Column(Float(precision=2))
 
     def __init__(self, name, description, price):
-        self.first_name = name
         self.name = name
         self.description = description
         self.price = price
@@ -99,9 +101,31 @@ class Product(db.Model):
     def format(self):
         return {
             'id': self.id,
-            'product_name': self.name,
+            'name': self.name,
             'description': self.description,
-            'price': self.price,
+            'price': self.price
+        }
+
+    def insert(self):
+        db.session.add(self)
+        db.session.commit()
+
+  
+    def update(self):
+        db.session.commit()
+
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+
+    def format(self):
+        return {
+            'id': self.id,
+            'product': self.product_name,
+            'description': self.description,
+            'price': self.price
         }
 
 ''' 
