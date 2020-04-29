@@ -186,8 +186,7 @@ def create_app(test_config=None):
         new_description = info.get('description', None)
         new_price = float(info.get('price', None))
 
-        if (new_name is None) or (new_description is None) \
-            or (new_price == 0):
+        if (new_name is None) or (new_description is None) or (new_price == 0):
             return jsonify({
                 'success': False,
                 'status_code': 404,
@@ -222,7 +221,7 @@ def create_app(test_config=None):
             
             return jsonify({
                 'success': True,
-                'status_code': 200
+                'status_code': 200,
             })
         except:
             abort(422)

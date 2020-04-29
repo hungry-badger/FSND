@@ -98,6 +98,13 @@ class Product(db.Model):
         self.description = description
         self.price = price
 
+    def format(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'price': self.price
+        }
 
     def insert(self):
         db.session.add(self)
@@ -120,7 +127,6 @@ class Product(db.Model):
             'description': self.description,
             'price': self.price
         }
-        
 
 ''' 
 Sales
