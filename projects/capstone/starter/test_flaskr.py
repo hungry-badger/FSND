@@ -25,8 +25,8 @@ class CapstoneTestCase(unittest.TestCase):
         """Define test variables and initialize app."""
         self.app = create_app()
         self.client = self.app.test_client
-        self.database_name = "capdb"
-        self.database_path = "postgres://{}/{}".format('localhost:5432', self.database_name)
+        #self.database_name = "capdb"
+        self.database_path = "postgres://rmzzyhjbgcmjkj:c0111010a63b2f67c07b84c3ef860d1b11c76440575127286f1e814dd55d2005@ec2-18-215-99-63.compute-1.amazonaws.com:5432/deofd1ev73pp7h"
         setup_db(self.app, self.database_path)
 
         # binds the app to the current context

@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import json
 
-database_path = 'postgresql://niekjansenvanrensburg@localhost:5432/capdb'
+database_path = 'postgres://rmzzyhjbgcmjkj:c0111010a63b2f67c07b84c3ef860d1b11c76440575127286f1e814dd55d2005@ec2-18-215-99-63.compute-1.amazonaws.com:5432/deofd1ev73pp7h'
 
 db = SQLAlchemy()
 
@@ -120,7 +120,7 @@ class Product(db.Model):
             'description': self.description,
             'price': self.price
         }
-        
+
 
 ''' 
 Sales
