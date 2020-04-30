@@ -91,7 +91,23 @@ curl --location --request GET 'https://nich-capstone-app.herokuapp.com/clients' 
 ```
 
 ### Expected Response:
-[Welcome to the JUNGLE!!!]
+```
+{
+    "clients": [
+        {
+            "email": "wonder@waters.com",
+            "first_name": "Wonder",
+            "id": 3,
+            "id_number": "8804170299087",
+            "phone": "0123556789",
+            "surname": "Waters"
+        },
+    ],
+    "status_code": 200,
+    "success": true,
+    "total clients": 1
+}
+```
 
 ## Create client API
 POST endpoint to create a client record that is only accessable by an Administrator or Client user.
@@ -113,6 +129,7 @@ From your Command Line Interface, run:
 ```
 
 ### Expected Response:
+```
 {
   "client": {
     "email": "sachin@tendulkar.com",
@@ -125,7 +142,7 @@ From your Command Line Interface, run:
   "status_code": 200,
   "success": true
 }
-
+```
 
 ## Update client record API
 PATCH endpoint to update a client record that is only accessable by an Administrator or Client user. 
@@ -145,6 +162,7 @@ curl --location --request PATCH 'https://nich-capstone-app.herokuapp.com/clients
 ```
 
 ### Expected Response:
+```
 {
   "client": {
     "email": "sachin@tendulkar.com",
@@ -157,6 +175,7 @@ curl --location --request PATCH 'https://nich-capstone-app.herokuapp.com/clients
   "status_code": 200,
   "success": true
 }
+```
 
 
 ## Delete client record
@@ -173,6 +192,7 @@ curl --location --request DELETE 'https://nich-capstone-app.herokuapp.com/client
 ```
 
 ### Expect Response:
+```
 {
   "delete": {
     "email": "sachin@tendulkar.com",
@@ -185,7 +205,7 @@ curl --location --request DELETE 'https://nich-capstone-app.herokuapp.com/client
   "status_code": 200,
   "success": true
 }
-
+```
 
 ## Product API's
 Product API's are the same as the Client API's, except for:
