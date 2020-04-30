@@ -7,52 +7,51 @@ from models import setup_db, Client, Product, database_path
 
 unittest.TestLoader.sortTestMethodsUsing = None
 
+"""Active tokens for RBAC"""
 auth_header_admin = {
-    'Authorization': ('Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6Ikp' +
-                      'XVCIsImtpZCI6IkdaOGJ6anR4RVpyQ2gwY0V2O' +
-                      'HJuVCJ9.eyJpc3MiOiJodHRwczovL25pY2guZXU' +
-                      'uYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVlYT' +
-                      'dhZWRkY2YxOTBmMGMwZjZlNDBkNCIsImF1ZCI6I' +
-                      'mNhcHN0b25lIiwiaWF0IjoxNTg4MTM1MzEyLCJl' +
-                      'eHAiOjE1ODgyMjE3MTIsImF6cCI6IkdSaHRWSk9' +
-                      'KZm5aQjZZMmRMUnhWdERzR05IOElMS3pIIiwic2' +
-                      'NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxld' +
-                      'GU6Y2xpZW50cyIsImRlbGV0ZTpwcm9kdWN0cyIs' +
-                      'ImdldDpjbGllbnRzIiwiZ2V0OnByb2R1Y3RzIiw' +
-                      'icGF0Y2g6Y2xpZW50cyIsInBhdGNoOnByb2R1Y3R' +
-                      'zIiwicG9zdDpjbGllbnRzIiwicG9zdDpwcm9kdWN' +
-                      '0cyJdfQ.g4x49OrnAC3OYvfvzewdPP-mZ-8mTmaF' +
-                      'PkB-LLpY7Htv-ebjZ7yye4EemBi0OWqRklTb5gn1' +
-                      'CYyv-SYvYJEEdpLnucyy0mWKBWJWVhJw2iBbUCsFS' +
-                      'bd204doLdlK4cTBVV4j2w8uBV4G__8JX90i1dh_v0' +
-                      'NfQUwppV9ac8b76eAOpJxcqIKNNFzDccJbQZ2sKa39' +
-                      '8Ce9JwANieqeRKNeJQjfE-2C7WDG7DC3PY1OH3fjY7' +
-                      'Wtov4JFi7Ze1luBMWJuB1ZpLKHDDVmbV9OzzsQvmv5' +
-                      'ABpb88V3OGMthaVNT6U5TpSiB8g0ZJ0FzdhAXZ_sqn' +
-                      'onrg5ZY7tZQd1I2dMUjQ')
+    'Authorization': ('Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtp' +
+                      'ZCI6IkdaOGJ6anR4RVpyQ2gwY0V2OHJuVCJ9.eyJpc3MiOi' +
+                      'JodHRwczovL25pY2guZXUuYXV0aDAuY29tLyIsInN1YiI6I' +
+                      'mF1dGgwfDVlYTdhZWRkY2YxOTBmMGMwZjZlNDBkNCIsImF1' +
+                      'ZCI6ImNhcHN0b25lIiwiaWF0IjoxNTg4MjM2NDgxLCJleHA' +
+                      'iOjE1ODgzMjI4ODEsImF6cCI6IkdSaHRWSk9KZm5aQjZZMm' +
+                      'RMUnhWdERzR05IOElMS3pIIiwic2NvcGUiOiIiLCJwZXJta' +
+                      'XNzaW9ucyI6WyJkZWxldGU6Y2xpZW50cyIsImRlbGV0ZTpw' +
+                      'cm9kdWN0cyIsImdldDpjbGllbnRzIiwiZ2V0OnByb2R1Y3R' +
+                      'zIiwicGF0Y2g6Y2xpZW50cyIsInBhdGNoOnByb2R1Y3RzIi' +
+                      'wicG9zdDpjbGllbnRzIiwicG9zdDpwcm9kdWN0cyJdfQ.Ck' +
+                      'Ncmci1zBUfGepaHva-q8n1jEa7EOJmv4n4CArwEk1EKIk_t' +
+                      'yZCBuC7380Id2vIvoGi05909L9UqCBk6RSybJNh4IxjxCt-' +
+                      'M6ByPpHTaeKpGXX3qeWhtrm7c7RiK_35gF6RgdvFQh50nlW' +
+                      'b2BtrvnZYzZr-qqcmoUvpN5keVHqWVecfocxjrNZqL7MQZb' +
+                      'VDL6sqbIHa7_F-FEyQ2J7ufX0zOG4-QXJLFno92AI20TxWp' +
+                      '69VeSPwhUk5kgsOgBuDS9X7OUvQWo07nrpq7ZlbsvNCaX9J' +
+                      '24w9BLPim18edbOQvGGHS6Z7ctjOCYjCocNrsjsYQv57i8D' +
+                      'uF-6NrGoneQ')
 }
 
 auth_header_client = {
     'Authorization': ('Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtp' +
                       'ZCI6IkdaOGJ6anR4RVpyQ2gwY0V2OHJuVCJ9.eyJpc3MiOi' +
-                      'JodHRwczovL25pY2guZXUuYXV0aDAuY29tLyIsInN1YiI6Im' +
-                      'F1dGgwfDVlYTdhZDY1NmM4ZWIyMGMxNTM0OWUxZCIsImF1ZCI' +
-                      '6ImNhcHN0b25lIiwiaWF0IjoxNTg4MTM1NDE1LCJleHAiOjE1' +
-                      'ODgyMjE4MTUsImF6cCI6IkdSaHRWSk9KZm5aQjZZMmRMUnhWdE' +
-                      'RzR05IOElMS3pIIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6' +
-                      'WyJkZWxldGU6Y2xpZW50cyIsImdldDpwcm9kdWN0cyIsInBhdG' +
-                      'NoOmNsaWVudHMiLCJwb3N0OmNsaWVudHMiXX0.JpUxcaIA79xI' +
-                      'AuINKeHrnfn_Y2qdVIrOnITmZ3mREEl0Y0fXXiju3EvcuHhXlh' +
-                      'UJQjW-55G_TNHZ1vj6MIWJxuiFd_zwJHkoMo50rOH0nbhgLDLn' +
-                      'VZ48L5_BTV0P6ARqZ78r-aNap-ryD72b4A7mPugeitZcVGCOF6' +
-                      'hDuOxrLk8JZQBE7QDS4GU7TdDSrcpAT6dUCqaS8XtyPSKEsWZU9' +
-                      'ruuJUbEDtc_oMnjvfr8UXppX9wzL_lFcB58tTrJk1TcWc2Nd39v' +
-                      '0M-7QTwAqDc82LPN9batYcHXLY0bNjmzxMULTs4UJkvwObp3zMr' +
-                      'G-Fx0gZr6hsKc5XN6Voxddo0aBQ')
+                      'JodHRwczovL25pY2guZXUuYXV0aDAuY29tLyIsInN1YiI6I' +
+                      'mF1dGgwfDVlYTdhZDY1NmM4ZWIyMGMxNTM0OWUxZCIsImF1' +
+                      'ZCI6ImNhcHN0b25lIiwiaWF0IjoxNTg4MjM2NTgxLCJleHA' +
+                      'iOjE1ODgzMjI5ODEsImF6cCI6IkdSaHRWSk9KZm5aQjZZMm' +
+                      'RMUnhWdERzR05IOElMS3pIIiwic2NvcGUiOiIiLCJwZXJta' +
+                      'XNzaW9ucyI6WyJkZWxldGU6Y2xpZW50cyIsImdldDpwcm9k' +
+                      'dWN0cyIsInBhdGNoOmNsaWVudHMiLCJwb3N0OmNsaWVudHM' +
+                      'iXX0.oXY9NJL-2Qh4VYMN4r7jCvjqhzs9YVcQrVtfBj6wcP' +
+                      'OOHgQmdMkEck4e_s96I9X2ACWNWdujfXEQTA6jB8YmFwJeV' +
+                      '54KyfrMCEE8T-J6GLVxd_0wJ_PlFskP23Px3E0569lo-L6K' +
+                      '8TKjVikY43m72W05yk6OKmq1c7tXjaCOU6adRvhH1CEuPGn' +
+                      'rn4HJoxkC2byLcuqSLEIgEykQYsgJ-GyjrAPHh_wwEGKnFU' +
+                      '8FBkm-xJaXSy8YZZlLPNSj_aI-MLj0bebwDSaDSYRBi96NF' +
+                      'R7gzI7xgc-Nv0Rht8AOoO6LMf7BmuybAHhHEoSesOJxJaaC' +
+                      'xs818z-kk8dfegK1UA')
 }
 
 new_client_id = 1
-new_product_id = 10
+new_product_id = 13
 
 
 class CapstoneTestCase(unittest.TestCase):
@@ -65,10 +64,10 @@ class CapstoneTestCase(unittest.TestCase):
         """Define test variables and initialize app."""
         self.app = create_app()
         self.client = self.app.test_client
-        self.database_path = ("postgres://upjcrmjyvdqdmu:729ab9adc43d492" +
-                              "4df23fb0f4795787ab6d73bf709b63114deadb004" +
-                              "cc026ea4@ec2-18-235-20-228.compute-1.amaz" +
-                              "onaws.com:5432/ddr6r33e7bl6qp")
+        self.database_path = ('postgres://qmmltywmjdalzd:11548019713a5731' +
+                              'a52d7f5deeb74f171f19618c3bd6c846e0f37d2ee2' +
+                              'a36a1a@ec2-52-7-39-178.compute-1.amazonaws' +
+                              '.com:5432/d9ii0qpm1m15jp')
         setup_db(self.app, self.database_path)
 
         # binds the app to the current context
