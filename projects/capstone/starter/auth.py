@@ -4,10 +4,6 @@ from functools import wraps
 from jose import jwt
 from urllib.request import urlopen
 
-'''
-Auth0 login URL 
-https://nich.eu.auth0.com/authorize?audience=capstone&response_type=token&client_id=GRhtVJOJfnZB6Y2dLRxVtDsGNH8ILKzH&redirect_uri=http://127.0.0.1:5000/login
-'''
 AUTH0_DOMAIN = 'nich.eu.auth0.com'
 ALGORITHMS = ['RS256']
 API_AUDIENCE = 'capstone'
